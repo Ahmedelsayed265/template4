@@ -1,0 +1,923 @@
+@import "./sass/mixins";
+body {
+  overflow-x: hidden;
+  font-family: "Poppins", sans-serif;
+  header {
+    nav {
+      width: 100%;
+      padding: 20px 100px;
+      @include space-between();
+      background-color: $white;
+      gap: 140px;
+      z-index: 100;
+      transition: 0.5s;
+      &.fixed {
+        position: fixed;
+        top: 0px;
+        left: 0;
+        z-index: 9999999999999;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+      }
+      .links {
+        flex: 1;
+        @include space-between();
+        position: relative;
+        transition: 0.5s;
+        &.active {
+          ul {
+            flex-direction: column;
+          }
+          .close {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        }
+        .close {
+          display: none;
+          font-size: 20px;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background: $btn_grad;
+          position: absolute;
+          top: 20px;
+          right: 25px;
+          i {
+            color: $white;
+          }
+        }
+        ul {
+          @include space-between();
+          gap: 30px;
+          li {
+            padding: 0 10px;
+            a {
+              position: relative;
+              transition: 0.3s;
+              color: $secondary_black;
+              &:not(.btn)::before {
+                content: "";
+                position: absolute;
+                height: 2px;
+                width: 0;
+                bottom: -2px;
+                left: 0;
+                background-color: $alt-color;
+                transition: 0.3s;
+              }
+              &:not(.btn).active,
+              &:not(.btn):hover {
+                color: $alt-color;
+              }
+              &:not(.btn).active::before,
+              &:not(.btn):hover::before {
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+    .home {
+      padding: 100px 0 50px 100px;
+      display: flex;
+      align-items: center;
+      gap: 100px;
+      position: relative;
+      &::before {
+        content: "";
+        position: absolute;
+        width: 70%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        border-radius: 0px 20px 20px 0px;
+        background: $btn_grad;
+        opacity: 0.05;
+        z-index: -1;
+      }
+      .content {
+        width: 100%;
+        .btn {
+          padding: 15px 40px;
+          margin: 40px 0 50px;
+          display: block;
+          width: fit-content;
+        }
+        .students {
+          display: flex;
+          align-items: center;
+          gap: 30px;
+          img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            &:not(:first-of-type) {
+              margin-left: -20px;
+            }
+          }
+          p {
+            font-size: 16px;
+            span {
+              color: $alt-color;
+            }
+          }
+        }
+      }
+      .video {
+        width: 100%;
+        position: relative;
+        height: 290px;
+        .play-btn {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          background-color: $white;
+          color: $main_black;
+          @include centerFlex();
+          font-size: 18px;
+          cursor: pointer;
+          i {
+            margin-left: 2px;
+          }
+        }
+        video {
+          width: 100%;
+          height: 100%;
+          box-shadow: $main_shadow;
+          background-color: $main_black;
+          border-radius: 20px 0px 0px 20px;
+        }
+      }
+    }
+  }
+  main {
+    position: relative;
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      z-index: -1;
+      transition: 1s;
+      &.circle-one {
+        width: 250px;
+        height: 250px;
+        background: $btn_grad;
+        top: 100px;
+        left: -400px;
+        &::before {
+          content: "";
+          position: absolute;
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+          background: $orange_grad;
+          bottom: 20px;
+          right: -20px;
+        }
+      }
+      &.circle-two {
+        width: 350px;
+        height: 350px;
+        background: $orange_grad;
+        top: 200px;
+        right: -450px;
+      }
+      &.circle-three {
+        width: 320px;
+        height: 320px;
+        background: $btn_grad;
+        bottom: 600px;
+        right: -500px;
+        &::before {
+          content: "";
+          position: absolute;
+          width: 100px;
+          height: 100px;
+          background: $orange_grad;
+          top: 20px;
+          left: -30px;
+          border-radius: 50%;
+        }
+      }
+    }
+    .courses {
+      h2,
+      p {
+        text-align: center;
+      }
+      h2 {
+        margin: 100px 0 20px;
+      }
+      & > p {
+        margin-bottom: 50px;
+      }
+      .counter {
+        width: 100%;
+        border-radius: 21px;
+        border: 1px solid $border;
+        padding: 30px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        background-color: $white;
+        .count {
+          flex: 1;
+          text-align: center;
+          &:not(:last-of-type) {
+            border-right: 1px solid #e7eaeb;
+          }
+          .num {
+            font-size: 40px;
+            font-weight: 700;
+            display: block;
+          }
+          .name {
+            font-size: 16px;
+            font-weight: 400;
+            display: block;
+          }
+        }
+      }
+      .card {
+        width: 100%;
+        padding: 30px 40px;
+        display: flex;
+        gap: 30px;
+        background-color: #fbf3ff;
+        border-radius: 21px;
+        margin-bottom: 20px;
+        .btn span {
+          font-size: 16px;
+          padding: 0 20px;
+          &:first-of-type {
+            border-right: 1px solid #8639b5;
+          }
+        }
+        .icon {
+          min-width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          @include centerFlex();
+          background-color: $white;
+          span {
+            @include centerFlex();
+            font-size: 24px;
+          }
+          .shape-one {
+            width: 100%;
+            height: 100%;
+            transform: rotate(-90deg);
+            margin-right: -20px;
+            margin-bottom: 10px;
+            z-index: 1;
+            i {
+              color: $alt-color;
+            }
+          }
+          .shape-two {
+            width: 100%;
+            height: 100%;
+            transform: rotate(90deg);
+            margin-left: -20px;
+            margin-top: 10px;
+            i {
+              color: #ffd7a9;
+            }
+          }
+        }
+        .text {
+          flex: 1;
+          @include space-between();
+          h3 {
+            margin-bottom: 10px;
+          }
+          p {
+            text-align: left;
+            font-size: 16px;
+            font-weight: 400;
+          }
+        }
+      }
+      .instructor {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 100px;
+        margin-top: 40px;
+        .text p,
+        h2 {
+          text-align: start;
+        }
+        .img {
+          width: 350px;
+          height: 350px;
+          border-radius: 50%;
+          background: $btn_grad;
+          display: flex;
+          justify-content: center;
+          margin: 50px 0 0 50px;
+          position: relative;
+          img {
+            width: 100%;
+            border-radius: 50%;
+          }
+          &::after,
+          &::before {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            background: $orange_grad;
+            z-index: -1;
+            opacity: 0;
+            transition: 0.5s;
+          }
+          &::after {
+            width: 88px;
+            height: 88px;
+            top: -90px;
+            left: -60px;
+          }
+          &.move::after {
+            top: -30px;
+            left: 0;
+            opacity: 1;
+          }
+          &::before {
+            width: 132px;
+            height: 132px;
+            opacity: 0.3;
+            bottom: -90px;
+            right: -60px;
+          }
+          &.move::before {
+            opacity: 0.3;
+            bottom: -30px;
+            right: -20px;
+          }
+        }
+      }
+    }
+    .comments {
+      background: $btn_grad;
+      padding: 75px 0;
+      p,
+      h2 {
+        text-align: center;
+        color: $white;
+      }
+      h2 {
+        margin-bottom: 20px;
+      }
+      & > p {
+        opacity: 0.8;
+      }
+      .slider {
+        margin: 70px 70px 0 70px;
+        display: grid;
+        grid-template-columns: repeat(3, 590px);
+        gap: 40px;
+        overflow-x: auto;
+        &::-webkit-scrollbar {
+          height: 0;
+          width: 0;
+        }
+        .slide {
+          background-color: $slide-bg;
+          padding: 45px 40px;
+          border-radius: 20px;
+          min-width: 550px;
+          display: flex;
+          flex-direction: column;
+          p {
+            text-align: left;
+          }
+          .profile {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+            span,
+            h3 {
+              font-size: 16px;
+              color: $white;
+              font-weight: 400;
+            }
+            span {
+              opacity: 0.8;
+            }
+            img {
+              width: 50px;
+              height: 50px;
+              border-radius: 50%;
+            }
+          }
+        }
+      }
+    }
+    .q {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      h2 {
+        text-align: center;
+        margin-bottom: 80px;
+      }
+      .accordion {
+        width: 80%;
+        display: flex;
+        gap: 40px;
+        border: 1px solid #e7eaeb;
+        border-radius: 21px;
+        padding: 40px 40px;
+        margin-bottom: 30px;
+        height: 100px;
+        overflow: hidden;
+        transition: height 0.5s;
+        position: relative;
+        &.active {
+          height: 215px;
+          .toggle {
+            top: 50px;
+          }
+        }
+        .q-text h3 {
+          margin-bottom: 30px;
+        }
+        .toggle {
+          height: 45px;
+          min-width: 45px;
+          border-radius: 50%;
+          @include centerFlex();
+          transform: translateY(-50%);
+          background: $alt-orange;
+          position: absolute;
+          color: $alt-color;
+          cursor: pointer;
+          top: 50px;
+          right: 40px;
+          i {
+            color: $alt-color;
+            transition: 0.5s;
+            font-size: 14px;
+            &.flip {
+              transform: rotate(180deg);
+            }
+          }
+        }
+      }
+    }
+    .ready {
+      @include centerFlex();
+      text-align: center;
+      flex-direction: column;
+      gap: 30px;
+      .dis-btn {
+        background: $alt-orange;
+        color: $alt-color;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 15px;
+        padding: 10px 30px;
+        border-radius: 33px;
+      }
+    }
+    .contact {
+      width: 100%;
+      padding-top: 120px;
+      padding-bottom: 50px;
+      .hed {
+        color: $main_black;
+        margin-bottom: 50px;
+        text-align: center;
+        font-size: 46px;
+        line-height: 58px;
+      }
+      .row {
+        display: flex;
+        width: 100%;
+        gap: 5%;
+        .form_container {
+          width: 50%;
+          form {
+            width: 100%;
+            .info_grid {
+              display: grid;
+              grid-template-columns: repeat(2, 1fr);
+              grid-gap: 20px;
+              .inp_field {
+                padding: 0 10px;
+                display: flex;
+                flex-direction: column;
+                label {
+                  color: $main_black;
+                  font-size: 15px;
+                  font-weight: 500;
+                }
+                input {
+                  @include clearInput();
+                  border: 1px solid #c4c4c4;
+                  border-radius: 4px;
+                  padding: 0 10px;
+                  height: 40px;
+                  color: $main_black;
+                  &::placeholder {
+                    color: #c4c4c4;
+                  }
+                }
+              }
+            }
+            .text_area {
+              padding: 30px 10px 0 10px;
+              display: flex;
+              width: 100%;
+              flex-direction: column;
+              label {
+                color: $main_black;
+                font-size: 15px;
+                font-weight: 500;
+              }
+              textarea {
+                @include clearInput();
+                border: 1px solid #c4c4c4;
+                border-radius: 4px;
+                padding: 10px 10px;
+                color: $main_black;
+                &::placeholder {
+                  color: #c4c4c4;
+                }
+              }
+            }
+            button {
+              width: 120px;
+              height: 40px;
+              cursor: pointer;
+              margin-top: 30px;
+              margin-left: 10px;
+              @include clearInput();
+              background: $secondary_black;
+              color: $white;
+            }
+          }
+        }
+        .map_container {
+          width: 45%;
+        }
+      }
+    }
+  }
+  footer {
+    padding: 75px 100px;
+    background: $alt-orange;
+    display: flex;
+    gap: 100px;
+    .content {
+      flex: 1;
+      .search {
+        position: relative;
+        margin-bottom: 50px;
+        margin-top: -17px;
+        input {
+          width: 100%;
+          padding: 20px 30px;
+          border-radius: 33px;
+          @include clearInput();
+          background-color: $white;
+          caret-color: $alt-color;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 20px;
+          color: $secondary_black;
+          box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.0501257);
+        }
+        .btn {
+          padding: 13px 20px;
+          position: absolute;
+          right: 7px;
+          top: 7px;
+        }
+      }
+      .links {
+        display: flex;
+        justify-content: space-around;
+        ul li {
+          padding: 10px 0;
+          &.active a {
+            color: $main_black;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 20px;
+          }
+          a {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 20px;
+            color: var(--p-color);
+          }
+        }
+      }
+    }
+  }
+  .to-top {
+    position: fixed;
+    bottom: 30px;
+    right: -100px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: $btn_grad;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.5s;
+    z-index: 9999999;
+    i {
+      color: $white;
+    }
+    &.show {
+      right: 30px;
+    }
+  }
+}
+@media (max-width: 991px) {
+  section {
+    padding: 75px 50px;
+  }
+  h1 {
+    font-size: 45px;
+    line-height: 53px;
+  }
+  h2 {
+    font-size: 36px;
+  }
+  h3 {
+    font-size: 20px;
+  }
+  p {
+    font-size: 18px;
+  }
+  body {
+    footer {
+      padding: 75px 30px;
+      gap: 30px;
+    }
+    header {
+      gap: 50px;
+      nav {
+        padding: 20px 30px;
+        gap: 40px;
+        .links ul {
+          gap: 10px;
+          li a {
+            font-size: 9px;
+            &:not(.btn)::before {
+              height: 1px;
+            }
+          }
+        }
+      }
+      .home {
+        padding: 100px 0 50px 30px;
+        gap: 25px;
+      }
+    }
+    main {
+      .circle.circle-three {
+        bottom: 850px;
+      }
+      .courses .card {
+        .text {
+          flex-direction: column;
+          gap: 25px;
+          align-items: baseline;
+        }
+        .btn span {
+          padding: 0 70px;
+        }
+      }
+      .courses .instructor {
+        gap: 0;
+      }
+      .q .accordion {
+        height: 100px;
+        width: 100%;
+        padding: 40px 30px;
+        .toggle {
+          right: 20px;
+        }
+      }
+      .comments .slider {
+        grid-template-columns: repeat(3, 627px);
+      }
+      .contact .row {
+        flex-direction: column;
+        gap: 25px;
+        .form_container {
+          width: 100%;
+        }
+        .map_container {
+          height: 320px;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 576px) {
+  a {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+  }
+  img {
+    width: 100%;
+  }
+  h1 {
+    font-size: 26px;
+    letter-spacing: -1px;
+    font-weight: 700;
+    line-height: 40px;
+    margin-bottom: 20px;
+  }
+  h2 {
+    font-size: 26px;
+    line-height: 1.5;
+  }
+  h3 {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+  }
+  p {
+    color: var(--p-color);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+  }
+  .logo {
+    width: 150px;
+  }
+  section {
+    padding: 75px 25px;
+  }
+  .menu {
+    @include centerFlex();
+  }
+  body {
+    header {
+      nav {
+        padding: 20px 25px;
+      }
+      nav .links {
+        height: 0;
+        width: 0;
+        overflow: hidden;
+        ul{
+          gap: 25px;
+        }
+        ul li a{
+          font-size: 20px;
+        }
+        &.active {
+          display: flex;
+          position: fixed;
+          width: 100%;
+          height: 100%;
+          background-color:$white;
+          top: 0;
+          right: 0;
+          z-index: 1000;
+          flex-direction: column;
+          justify-content: center;
+          gap: 30px;
+        }
+      }
+      .home {
+        padding: 100px 0 100px 25px;
+        flex-direction: column;
+        gap: 50px;
+        &::before {
+          width: 100%;
+        }
+        .content .students {
+          gap: 20px;
+        }
+      }
+    }
+    main {
+      .circle {
+        &.circle-one {
+          width: 200px;
+          height: 200px;
+        }
+        &.circle-two {
+          width: 300px;
+          height: 300px;
+        }
+        &.circle-three {
+          width: 280px;
+          height: 280px;
+          bottom: 943px;
+          right: -500px;
+        }
+      }
+      .courses .counter .count .num {
+        font-size: 24px;
+      }
+      .courses .counter .count .name {
+        font-size: 12px;
+      }
+      .courses .card {
+        flex-direction: column;
+        align-items: center;
+        .icon {
+          max-width: 60px;
+          min-height: 60px;
+          flex: 1;
+        }
+        .text {
+          flex-direction: column;
+          text-align: center;
+          align-items: center;
+          p {
+            text-align: center;
+          }
+        }
+        .btn {
+          margin-top: 20px;
+          span {
+            padding: 0 24px;
+          }
+        }
+      }
+      .courses .instructor {
+        grid-template-columns: none;
+        grid-template-rows: repeat(1, 1fr);
+        gap: 60px;
+        .text p,
+        h2 {
+          text-align: center;
+        }
+        .img {
+          margin: 0;
+        }
+      }
+      .comments {
+        .slider {
+          margin: 30px 30px 0 30px;
+          grid-template-columns: repeat(3, 355px);
+          .slide {
+            min-width: 320px;
+          }
+        }
+      }
+      .q .accordion {
+        width: 100%;
+        gap: 0;
+        padding: 27px 15px;
+        transition: 0.5s;
+        &.active {
+          height: 235px;
+        }
+        .toggle {
+          min-width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          right: 10px;
+          top: 50px;
+        }
+        .q-text h3 {
+          margin-bottom: 20px;
+          font-size: 14px;
+        }
+      }
+      .contact {
+        padding-top: 40px;
+        .row .form_container form .info_grid {
+          grid-template-columns: repeat(1, 1fr);
+        }
+      }
+    }
+    footer {
+      padding: 75px 25px;
+      gap: 50px;
+      flex-direction: column;
+      align-items: center;
+      .content {
+        width: 100%;
+        .links {
+          display: flex;
+          gap: 30px;
+          justify-content: center;
+        }
+      }
+    }
+    .to-top.show {
+      right: 10px;
+    }
+  }
+}
