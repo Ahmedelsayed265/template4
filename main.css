@@ -688,16 +688,18 @@ body main .contact .row .form_container form .text_area textarea::placeholder {
   color: #c4c4c4;
 }
 body main .contact .row .form_container form button {
-  width: 120px;
-  height: 40px;
+  width: 160px;
+  height: 50px;
   cursor: pointer;
   margin-top: 30px;
   margin-left: 10px;
+  border-radius: 25px;
   border: none;
   background: none;
   outline: none;
-  background: #4f596a;
+  background: linear-gradient(44.11deg, #cd10ff 15.75%, #cd10ff 15.76%, #9f06ff 84.63%);
   color: #fff;
+  font-size: 16px;
 }
 body main .contact .row .map_container {
   width: 45%;
@@ -867,7 +869,7 @@ body .to-top.show {
     width: 100%;
   }
   h1 {
-    font-size: 26px;
+    font-size: 24px;
     letter-spacing: -1px;
     font-weight: 700;
     line-height: 40px;
